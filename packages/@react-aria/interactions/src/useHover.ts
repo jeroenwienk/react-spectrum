@@ -198,6 +198,14 @@ export function useHover(props: HoverProps): HoverResult {
     }
   }, [isDisabled]);
 
+  useEffect(() => {
+    return function () {
+      if (state.isHovered) {
+        triggerHoverEnd({currentTarget: state.target}, state.pointerType);
+      }
+    }
+  }, [])
+
   return {
     hoverProps,
     isHovered
